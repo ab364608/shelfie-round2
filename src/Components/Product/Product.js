@@ -13,8 +13,11 @@ export default class Product extends Component {
         return (
             <div>
                 <h3>Product: {name}</h3>
-                <h4>Name: {price}</h4>
+                <h4>Price: {price}</h4>
                 <img src={img} alt='img'/>
+                <div>
+                    <button onClick={() => this.props.deleteProduct(this.props.product.id)}>Delete</button>
+                </div>
             </div>
         )
     }

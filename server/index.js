@@ -2,7 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const massive = require('massive');
 
-const {viewInventory} = require('./controller')
+const {viewInventory, createProduct, deleteProduct} = require('./controller')
 
 const app = express();
 
@@ -15,7 +15,9 @@ massive(process.env.CONNECTION_STRING)
 
 app.use(express.json());
 
-app.get('/api/inventory', viewInventory)
+app.get('/api/inventory', viewInventory);
+app.post('/api/product', createProduct);
+app.delete('/api/inventory/:id', deleteProduct);
 
 const PORT = 4000;
 app.listen(PORT, () => {
